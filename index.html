@@ -1,5 +1,5 @@
 <html>
-<input type="button" value="button"><br/><br/>
+<input type="button" value="button" onclick="localStorage.setItem("lastname", "h");"><br/><br/>
 <input type="checkbox"><br/><br/>
 <input type="color"><br/><br/>
 <input type="date"><br/><br/>
@@ -21,4 +21,12 @@
 <input type="time"><br/><br/>
 <input type="url"><br/><br/>
 <input type="week"><br/><br/>
+<p id="demo"></p>
+
+
+
+  
+<script>
+document.getElementById("demo").innerHTML = localStorage.getItem("lastname");
+</script>
 </html>
