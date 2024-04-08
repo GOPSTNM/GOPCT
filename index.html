@@ -10,9 +10,8 @@
   <script>
     function C () {
       const x = document.getElementById("input").value;
-      alert(x);
+      alert("Data Saved. Data is" + x);
       localStorage.setItem("CT", x);
-      alert("Saved Data");
     }
     function Show () {
       document.getElementById("show").innerHTML = localStorage.getItem("CT");;
