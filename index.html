@@ -3,10 +3,17 @@
     <h1>Hello</h1><br/>
     <input type="text" id="input"><br/>
     <button onclick="C()">Update</button>
+    <br/><br/>
+    <button onclick="Show()">Show Saved Data</button>
+    <p id="show">
   </body>
   <script>
     function C () {
       alert(document.getElementById("input"));
+      alert("Saved Data");
+    }
+    function Show () {
+      alert("hu");
     }
   </script>
 </html>
