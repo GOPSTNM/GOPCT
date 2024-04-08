@@ -11,10 +11,11 @@
     function C () {
       const x = document.getElementById("input").value;
       alert(x);
+      localStorage.setItem("CT", x);
       alert("Saved Data");
     }
     function Show () {
-      document.getElementById("show").innerHTML = "test";
+      document.getElementById("show").innerHTML = localStorage.getItem("CT");;
     }
   </script>
 </html>
