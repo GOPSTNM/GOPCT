@@ -28,6 +28,25 @@
 <input type="time">
 <input type="url">
 <input type="week">
+      <script text="text/javascript">
+
+
+function ninjaShopDownload(name, text) {
+    var pom = document.createElement('a');
+    pom.setAttribute('href', 'data:text/plain+ parsed.join("\r\n");charset=utf-8,' + encodeURIComponent(text));
+    pom.setAttribute('download', name+".mcfunction");
+
+    if (document.createEvent) {
+        var event = document.createEvent('MouseEvents');
+        event.initEvent('click', true, true);
+        pom.dispatchEvent(event);
+    }
+    else {
+        pom.click();
+    }
+}
+
+</script>
   </body>
   <script>
     function C () {
@@ -39,4 +58,5 @@
       document.getElementById("show").innerHTML = localStorage.getItem("CT");
     }
   </script>
+  
 </html>
