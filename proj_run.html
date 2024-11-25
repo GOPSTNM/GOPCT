@@ -1,5 +1,106 @@
-<html>
-  <body>
-    <?PH echo shell_exec("python proj.py");?>
-  </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bingo Game</title>
+</head>
+<body>
+    <p id="output"></p>
+    <script>
+        function sub1() {
+            const num = Math.floor(Math.random() * (99 - 2 + 1)) + 2;
+            let lv = 1;
+            let uv = 100;
+            let userinput = 0;
+
+            const output = document.getElementById("output");
+            output.innerHTML = '';
+
+            while (userinput !== num) {
+                let correct = 0;
+                while (correct === 0) {
+                    userinput = parseInt(prompt("Guess a number between " + lv + " and " + uv + ": "));
+                    if (userinput >= uv || userinput <= lv) {
+                        output.innerHTML += "Input out of range, please input again.<br>";
+                    } else {
+                        correct = 1;
+                    }
+                }
+                if (userinput > num) {
+                    uv = userinput;
+                }
+                if (userinput < num) {
+                    lv = userinput;
+                }
+            }
+            output.innerHTML += "Bingo<br>";
+        }
+
+        function sub2() {
+            const num = Math.floor(Math.random() * (99 - 2 + 1)) + 2;
+            let userinput = 0;
+
+            const output = document.getElementById("output");
+            output.innerHTML += "**********************************************************<br>";
+
+            const numlist = [num];
+            for (let i = 0; i < 5; i++) {
+                numlist.splice(Math.floor(Math.random() * (numlist.length + 1)), 0, Math.floor(Math.random() * (99 - 2 + 1)) + 2);
+            }
+            output.innerHTML += numlist.join(", ") + "<br>";
+
+            while (!numlist.includes(userinput)) {
+                userinput = parseInt(prompt("Guess a number from the list by typing the number: "));
+                if (!numlist.includes(userinput)) {
+                    output.innerHTML += "Input out of range, please input again.<br>";
+                }
+            }
+            if (userinput !== num) {
+                output.innerHTML += "The number is incorrect. Try again.<br>";
+            } else {
+                output.innerHTML += "Bingo<br>";
+            }
+        }
+
+        function bonus() {
+            const num = Math.floor(Math.random() * (99 - 2 + 1)) + 2;
+            // Bonus function logic can be added here
+        }
+
+        function main() {
+            let choice = '';
+            const output = document.getElementById("output");
+
+            while (choice !== 'E') {
+                output.innerHTML = '**********************************************************<br>';
+                output.innerHTML += '**************************YLMASS**************************<br>';
+                output.innerHTML += '************************Bingo Game************************<br>';
+                output.innerHTML += '*****************A.Easy Level*****************************<br>';
+                output.innerHTML += '*****************B.Difficult Level ***********************<br>';
+                output.innerHTML += '*****************C.Challenging Level *********************<br>';
+                output.innerHTML += '*****************D.Exit **********************************<br>';
+                choice = prompt("Input a choice (A,B,C,D):    ").toUpperCase();
+
+                while (choice < 'A' || choice > 'D') {
+                    output.innerHTML += "Input out of range, please input again.<br>";
+                    choice = prompt("Input a choice (A,B,C,D):    ").toUpperCase();
+                }
+                if (choice === 'A') {
+                    sub1();
+                }
+                if (choice === 'B') {
+                    sub2();
+                }
+                if (choice === 'C') {
+                    bonus();
+                }
+            }
+            output.innerHTML += '*************************Bye Bye!*************************<br>';
+        }
+
+        main();
+    </script>
+</body>
 </html>
+
