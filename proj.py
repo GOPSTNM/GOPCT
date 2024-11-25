@@ -29,7 +29,7 @@ def sub2():
       numlist.insert(random.randint(0, len(numlist)), random.randint(2, 99))
     print (numlist)
     while not(userinput in numlist):
-      userinput = int(input("Guess a number from the list above by typing the number: "))
+      userinput = int(input("Guess a number from the list by typing the number: "))
       if not(userinput in numlist):
         print("Input out of range, please input again.")
     if (userinput != num):
