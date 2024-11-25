@@ -22,9 +22,9 @@ def sub1():
   print("Bingo")
 def sub2():
   num = random.randint(2, 99)
-  numlist = [num]
   userinput = 0
   while (userinput != num):
+    numlist = [num]
     for i in range(5):
       numlist.insert(random.randint(0, len(numlist)), random.randint(2, 99))
     print (numlist)
