@@ -23,7 +23,8 @@ def sub1():
 def sub2():
   num = random.randint(2, 99)
   numlist = [num]
-  numlist.insert(random.randint(0, len(numlist)), random.randint(2, 99))
+  for i in range(5):
+    numlist.insert(random.randint(0, len(numlist)), random.randint(2, 99))
   print (numlist)
 def bonus():
   num = random.randint(2, 99)
