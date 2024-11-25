@@ -25,7 +25,7 @@ def sub2():
   userinput = 0
   while (userinput != num):
     numlist = [num]
-    print()
+    print("**********************************************************")
     for i in range(5):
       numlist.insert(random.randint(0, len(numlist)), random.randint(2, 99))
     print (numlist)
