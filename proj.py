@@ -21,11 +21,12 @@ def sub1():
       lv = userinput
   print("Bingo")
 def sub2():
-  print("Write something...")
-  input()
+  num = random.randint(2, 99)
+  numlist = [num]
+  numlist.insert(random.randint(0, len(numlist)), random.randint(2, 99))
+  print (numlist)
 def bonus():
-  print("Write something...")
-  input()
+  num = random.randint(2, 99)
 if __name__ == "__main__":
   choice = ''
   while (choice!='E'):
