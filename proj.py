@@ -10,7 +10,7 @@ def sub1():
   while (userinput != num):
     correct = 0
     while (correct == 0):
-      userinput = int(input("Guess a number between " + str(lv) + " and " + str(uv) + ":"))
+      userinput = int(input("Guess a number between " + str(lv) + " and " + str(uv) + ": "))
       if ((userinput >= uv) or (userinput <= lv)):
         print("Input out of range, please input again.")
       else:
