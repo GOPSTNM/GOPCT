@@ -23,9 +23,19 @@ def sub1():
 def sub2():
   num = random.randint(2, 99)
   numlist = [num]
-  for i in range(5):
-    numlist.insert(random.randint(0, len(numlist)), random.randint(2, 99))
-  print (numlist)
+  userinput = 0
+  while (userinput != num):
+    for i in range(5):
+      numlist.insert(random.randint(0, len(numlist)), random.randint(2, 99))
+    print (numlist)
+    while not(userinput in numlist):
+      userinput = int(input("Guess a number from the list above by typing the number: "))
+      if not(userinput in numlist):
+        print("Input out of range, please input again.")
+    if (userinput != num):
+      print("The number is incorrect. Try again.")
+    else:
+      print("Bingo")
 def bonus():
   num = random.randint(2, 99)
 if __name__ == "__main__":
