@@ -39,6 +39,24 @@ def sub2():
       print("Bingo")
 def bonus():
   num = random.randint(2, 99)
+  #lower value
+  lv = 1
+  #higher value
+  uv = 100
+  userinput = 0
+  while (userinput != num):
+    correct = 0
+    while (correct == 0):
+      userinput = int(input("Guess a number between " + str(lv) + " and " + str(uv) + ": "))
+      if ((userinput >= uv) or (userinput <= lv)):
+        print("Input out of range, please input again.")
+      else:
+        correct = 1
+    if (userinput > num):
+      uv = userinput
+    if (userinput < num):
+      lv = userinput
+  print("Bingo")
 if __name__ == "__main__":
   choice = ''
   while (choice!='E'):
