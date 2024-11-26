@@ -4,124 +4,149 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bingo Game</title>
+</head>
+<body>
+    <div id="output"></div>
+    <div id="inputArea"></div>
     <script>
-        function getRandomInt(min, max) {
-            return Math.floor(Math.random() * (max - min)) + min;
+        function clearOutput() {
+            document.getElementById('output').innerHTML = '';
+        }
+
+        function displayMessage(message) {
+            const outputDiv = document.getElementById('output');
+            outputDiv.innerHTML += message + '<br>';
+        }
+
+        function createInputBox(callback) {
+            const inputArea = document.getElementById('inputArea');
+            inputArea.innerHTML = '';
+
+            const input = document.createElement('input');
+            input.type = 'number';
+            input.placeholder = 'Enter your guess';
+            inputArea.appendChild(input);
+
+            const button = document.createElement('button');
+            button.innerText = 'Submit';
+            button.onclick = () => {
+                const userInput = parseInt(input.value);
+                callback(userInput);
+                input.value = '';
+            };
+            inputArea.appendChild(button);
         }
 
         function sub1() {
-            let num = getRandomInt(2, 100);
+            const num = Math.floor(Math.random() * (99 - 2 + 1)) + 2;
             let lv = 1;
             let uv = 100;
             let userinput = 0;
 
-            while (userinput !== num) {
-                let correct = 0;
-                while (correct === 0) {
-                    userinput = parseInt(document.getElementById("userInput").value);
-                    if (userinput >= uv || userinput <= lv) {
-                        document.getElementById("output").innerText = "Input out of range, please input again.";
-                    } else {
-                        correct = 1;
-                    }
-                }
-                if (userinput > num) {
-                    uv = userinput;
-                }
-                if (userinput < num) {
-                    lv = userinput;
+            function guessNumber() {
+                if (userinput !== num) {
+                    createInputBox((input) => {
+                        userinput = input;
+                        if (userinput >= uv || userinput <= lv) {
+                            displayMessage("Input out of range, please input again.");
+                        } else {
+                            if (userinput > num) {
+                                uv = userinput;
+                            } else if (userinput < num) {
+                                lv = userinput;
+                            }
+                            guessNumber();
+                        }
+                    });
+                } else {
+                    displayMessage("Bingo");
                 }
             }
-            document.getElementById("output").innerText = "Bingo";
+            guessNumber();
         }
 
         function sub2() {
-            let num = getRandomInt(2, 100);
+            const num = Math.floor(Math.random() * (99 - 2 + 1)) + 2;
             let userinput = 0;
-            let numlist = [num];
+            const numlist = [num];
 
-            while (userinput !== num) {
-                document.getElementById("output").innerText = "**********************************************************";
-                for (let i = 0; i < 5; i++) {
-                    numlist.splice(getRandomInt(0, numlist.length), 0, getRandomInt(2, 100));
-                }
-                document.getElementById("output").innerText += "\n" + numlist.join(", ");
-                while (!numlist.includes(userinput)) {
-                    userinput = parseInt(document.getElementById("userInput").value);
-                    if (!numlist.includes(userinput)) {
-                        document.getElementById("output").innerText = "Input out of range, please input again.";
-                    }
-                }
-                if (userinput !== num) {
-                    document.getElementById("output").innerText = "The number is incorrect. Try again.";
-                } else {
-                    document.getElementById("output").innerText = "Bingo";
-                }
+            for (let i = 0; i < 5; i++) {
+                numlist.splice(Math.floor(Math.random() * (numlist.length + 1)), 0, Math.floor(Math.random() * (99 - 2 + 1)) + 2);
             }
+
+            displayMessage("Guess a number from the list: " + numlist.join(", "));
+
+            function guessNumber() {
+                createInputBox((input) => {
+                    userinput = input;
+                    if (!numlist.includes(userinput)) {
+                        displayMessage("Input out of range, please input again.");
+                    } else {
+                        if (userinput !== num) {
+                            displayMessage("The number is incorrect. Try again.");
+                            guessNumber();
+                        } else {
+                            displayMessage("Bingo");
+                        }
+                    }
+                });
+            }
+            guessNumber();
         }
 
         function bonus() {
-            let num = getRandomInt(2, 100);
+            const num = Math.floor(Math.random() * (99 - 2 + 1)) + 2;
             let lv = 1;
             let uv = 100;
             let userinput = 0;
 
-            while (userinput !== num) {
-                let correct = 0;
-                while (correct === 0) {
-                    userinput = parseInt(document.getElementById("userInput").value);
+            function guessNumber() {
+                createInputBox((input) => {
+                    userinput = input;
                     if (userinput >= uv || userinput <= lv) {
-                        document.getElementById("output").innerText = "Input out of range, please input again.";
+                        displayMessage("Input out of range, please input again.");
                     } else {
-                        correct = 1;
+                        if (userinput > num) {
+                            uv = userinput;
+                        } else if (userinput < num) {
+                            lv = userinput;
+                        }
+                        guessNumber();
                     }
-                }
-                if (userinput > num) {
-                    uv = userinput;
-                }
-                if (userinput < num) {
-                    lv = userinput;
-                }
+                });
             }
-            document.getElementById("output").innerText = "Bingo";
+            guessNumber();
         }
 
-        function startGame() {
-            let choice = '';
-            while (choice !== 'E') {
-                document.getElementById("output").innerText = '**********************************************************\n' +
-                    '**************************YLMASS**************************\n' +
-                    '************************Bingo Game************************\n' +
-                    '*****************A.Easy Level*****************************\n' +
-                    '*****************B.Difficult Level ***********************\n' +
-                    '*****************C.Challenging Level *********************\n' +
-                    '*****************D.Exit **********************************\n' +
-                    'Input a choice (A,B,C,D): ';
-                choice = document.getElementById("userInput").value.toUpperCase();
-                if (choice < 'A' || choice > 'D') {
-                    document.getElementById("output").innerText = "Input out of range, please input again.";
+        function mainMenu() {
+            clearOutput();
+            displayMessage('**********************************************************');
+            displayMessage('**************************YLMASS**************************');
+            displayMessage('************************Bingo Game************************');
+            displayMessage('*****************A.Easy Level*****************************');
+            displayMessage('*****************B.Difficult Level ***********************');
+            displayMessage('*****************C.Challenging Level *********************');
+            displayMessage('*****************D.Exit **********************************');
+
+            createInputBox((input) => {
+                const choice = String.fromCharCode(input).toUpperCase();
+                if (choice === 'A') {
+                    sub1();
+                } else if (choice === 'B') {
+                    sub2();
+                } else if (choice === 'C') {
+                    bonus();
+                } else if (choice === 'D') {
+                    displayMessage('*************************Bye Bye!*************************');
                 } else {
-                    if (choice === 'A') {
-                        sub1();
-                    }
-                    if (choice === 'B') {
-                        sub2();
-                    }
-                    if (choice === 'C') {
-                        bonus();
-                    }
+                    displayMessage("Input out of range, please input again.");
+                    mainMenu();
                 }
-                document.getElementById("output").innerText += '\n*************************Bye Bye!*************************';
-            }
+            });
         }
+
+        mainMenu();
     </script>
-</head>
-<body>
-    <div>
-        <pre id="output"></pre>
-        <input type="text" id="userInput" placeholder="Enter your input here" />
-        <button onclick="startGame()">Start Game</button>
-    </div>
 </body>
 </html>
 
