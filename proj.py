@@ -68,8 +68,8 @@ def bonus():
       lv = userinput
     nog += 1
   print("Bingo")
-  print("You used " + str(int(time.time()-start_time)) + "secounds to guess the number.")
-  print("You guessed " + str(nog) + "times.")
+  print("You used " + str(int(time.time()-start_time)) + " secounds to guess the number.")
+  print("You guessed " + str(nog) + " times.")
 if __name__ == "__main__":
   choice = ''
   while (choice!='E'):
