@@ -65,7 +65,7 @@ def bonus():
     if (userinput < num):
       lv = userinput
   print("Bingo")
-  print("You used " + str(int(time.time()-start_time)) + " to guess the number")
+  print("You used " + str(int(time.time()-start_time)) + "s to guess the number")
 if __name__ == "__main__":
   choice = ''
   while (choice!='E'):
