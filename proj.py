@@ -49,11 +49,11 @@ def bonus():
   #higher value
   uv = 100
   userinput = 0
+  #record start time
+  start_time = time.time()
+  print("Starting time is " + str(start_time))
   while (userinput != num):
     correct = 0
-    #record start time
-    start_time = time.time()
-    print("Starting time is " + str(start_time))
     while (correct == 0):
       userinput = int(input("Guess a number between " + str(lv) + " and " + str(uv) + ": "))
       if ((userinput >= uv) or (userinput <= lv)):
