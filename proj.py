@@ -66,6 +66,7 @@ def bonus():
       uv = userinput
     if (userinput < num):
       lv = userinput
+    print("hint")
     nog += 1
   print("Bingo")
   print("You used " + str(int(time.time()-start_time)) + " secounds to guess the number.")
