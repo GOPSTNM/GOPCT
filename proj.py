@@ -66,7 +66,21 @@ def bonus():
       uv = userinput
     if (userinput < num):
       lv = userinput
-    print("hint")
+    #give hint to player randomly
+    hint = random.randint(1, 10)
+    if (hint == 1):
+      if (num%2 == 0):
+        print("Here is a hint, the number is an even number.")
+      else:
+        print("Here is a hint, the number is an odd number.")
+    if (hint == 2):
+      if (num%10 != 0):
+        print("Here is a hint, the last digit is not 0.")
+    if (hint == 3):
+      test_no = random.randint(0, 9)
+      
+    if (hint == 4):
+    if (hint == 5):
     nog += 1
   print("Bingo")
   print("You used " + str(int(time.time()-start_time)) + " secounds to guess the number.")
