@@ -51,7 +51,7 @@ def bonus():
   userinput = 0
   #record start time
   start_time = time.time()
-  print(str(num) + "Starting time is " + str(start_time))
+  print(str(num))
   while (userinput != num):
     correct = 0
     while (correct == 0):
