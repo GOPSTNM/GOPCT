@@ -88,7 +88,7 @@ def bonus():
       else:
         print("Here is a hint, the number is not divisible by 6.")
     if (hint == 5):
-      print("Here is a hint, the number has " + len(str(num)) + " digit(s).")
+      print("Here is a hint, the number has " + str(len(str(num))) + " digit(s).")
     nog += 1
   print("Bingo")
   print("You used " + str(int(time.time()-start_time)) + " secounds to guess the number.")
