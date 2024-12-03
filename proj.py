@@ -52,7 +52,6 @@ def bonus():
   userinput = 0
   #record start time
   start_time = time.time()
-  print(str(num))
   #number of guess
   nog = 0
   while (userinput != num):
