@@ -67,7 +67,7 @@ def bonus():
     if (userinput < num):
       lv = userinput
     #give hint to player randomly
-    hint = random.randint(1, 10)
+    hint = random.randint(1, 6)
     if (hint == 1):
       if (num%2 == 0):
         print("Here is a hint, the number is an even number.")
@@ -77,10 +77,18 @@ def bonus():
       if (num%10 != 0):
         print("Here is a hint, the last digit is not 0.")
     if (hint == 3):
-      test_no = random.randint(0, 9)
-      
+      test_no = str(random.randint(0, 9))
+      if (test_no in str(num)):
+        print("Here is a hint, " + test_no + " is one of the digits.")
+      else:
+        print("Here is a hint, " + test_no + " is not one of the digits.")
     if (hint == 4):
+      if (num%6 == 0):
+        print("Here is a hint, the number is divisible by 6.")
+      else:
+        print("Here is a hint, the number is not divisible by 6.")
     if (hint == 5):
+      print("Here is a hint, the number has " + len(str(num)) + " digit(s).")
     nog += 1
   print("Bingo")
   print("You used " + str(int(time.time()-start_time)) + " secounds to guess the number.")
