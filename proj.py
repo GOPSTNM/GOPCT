@@ -1,5 +1,6 @@
 import os
 import random
+import time
 def sub1():
   #generate random no
   num = random.randint(2, 99)
@@ -50,6 +51,9 @@ def bonus():
   userinput = 0
   while (userinput != num):
     correct = 0
+    #record start time
+    start_time = time.time()
+    print("Starting time is " + start_time)
     while (correct == 0):
       userinput = int(input("Guess a number between " + str(lv) + " and " + str(uv) + ": "))
       if ((userinput >= uv) or (userinput <= lv)):
@@ -61,6 +65,7 @@ def bonus():
     if (userinput < num):
       lv = userinput
   print("Bingo")
+  print("You used " + start_time-time.time() + " to guess the  number")
 if __name__ == "__main__":
   choice = ''
   while (choice!='E'):
