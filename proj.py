@@ -52,6 +52,8 @@ def bonus():
   #record start time
   start_time = time.time()
   print(str(num))
+  #number of guess
+  nog = 0
   while (userinput != num):
     correct = 0
     while (correct == 0):
@@ -64,8 +66,10 @@ def bonus():
       uv = userinput
     if (userinput < num):
       lv = userinput
+    nog += 1
   print("Bingo")
-  print("You used " + str(int(time.time()-start_time)) + "secounds to guess the number")
+  print("You used " + str(int(time.time()-start_time)) + "secounds to guess the number.")
+  print("You guessed " + str(nog) + "times.")
 if __name__ == "__main__":
   choice = ''
   while (choice!='E'):
