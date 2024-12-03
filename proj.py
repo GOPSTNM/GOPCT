@@ -1,6 +1,7 @@
 import os
 import random
 def sub1():
+  #generate random no
   num = random.randint(2, 99)
   #lower value
   lv = 1
@@ -8,6 +9,8 @@ def sub1():
   uv = 100
   userinput = 0
   while (userinput != num):
+    #correct means if ans is correct (in range)
+    #1=correct
     correct = 0
     while (correct == 0):
       userinput = int(input("Guess a number between " + str(lv) + " and " + str(uv) + ": "))
@@ -26,6 +29,7 @@ def sub2():
   while (userinput != num):
     numlist = [num]
     print("**********************************************************")
+    #make 5 numbers insert in list in random position
     for i in range(5):
       numlist.insert(random.randint(0, len(numlist)), random.randint(2, 99))
     print (numlist)
