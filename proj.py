@@ -44,6 +44,7 @@ def sub2():
       print("Bingo")
 def bonus():
   num = random.randint(2, 99)
+  used_hint = []
   #lower value
   lv = 1
   #higher value
@@ -68,6 +69,9 @@ def bonus():
       lv = userinput
     #give hint to player randomly
     hint = random.randint(1, 6)
+    if (hint in used_hint):
+      hint = 6
+    used_hint.insert(0,hint)
     if (hint == 1):
       if (num%2 == 0):
         print("Here is a hint, the number is an even number.")
